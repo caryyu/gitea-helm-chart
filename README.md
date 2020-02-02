@@ -48,12 +48,10 @@ Parameter |	Description | Default
  image.pullPolicy | k8s image pull policy | IfNotPresent
  replicaCount | number of replicas | 1
  podAnnotations | pod's annotation | {}
- - | - | -
  service.type | service type | ClusterIP
  service.labels | service labels | []
  service.annotations | service annotations | []
  service.selector | service selector | [] 
- - | - | -
  mysql.enabled | mysql enabling | true
  mysql.image | mysql image name | mysql
  mysql.imageTag | mysql image tag | 5
@@ -63,7 +61,6 @@ Parameter |	Description | Default
  mysql.mysqlAllowEmptyPassword | allow empty password | false
  mysql.timezone | datbase time zone | Asia/Shanghai
  mysql.persistence.enabled | database pvc enabling | false
- - | - | -
  config.server.domain | - | localhost
  config.server.rootUrl | - | http://localhost:3000
  config.server.sshDomain | - | localhost
