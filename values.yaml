@@ -1,0 +1,77 @@
+image:
+  repository: gitea/gitea
+  tag: 1.9.3
+  pullPolicy: "IfNotPresent"
+
+replicaCount: 1
+podAnnotations: {}
+
+service:
+  type: ClusterIP
+  labels: []
+  annotations: []
+  selector: []
+
+mysql:
+  enabled: true
+  image: mysql
+  imageTag: 5
+  mysqlUser: gitea
+  mysqlPassword: gitea
+  mysqlDatabase: gitea
+  mysqlAllowEmptyPassword: false
+  timezone: Asia/Shanghai
+
+  persistence:
+    enabled: false
+
+config:
+  server:
+    domain: localhost
+    rootUrl: http://localhost:3000
+    sshDomain: localhost
+    offlineMode: false
+
+  database:
+    dbType: mysql
+    host: gitea-mysql
+    port: 3306
+    name: gitea
+    user: gitea
+    passwd: gitea
+
+  security:
+    installLock: true
+
+  openid:
+    enableOpenIdSignIn: true
+
+  service:
+    disableRegistration: false
+    requireSigninView: false
+    enableNotifyMail: false
+
+  mailer:
+    enabled: false
+    host: smtp.gmail.com
+    port: 587
+    tls: false
+    from: ""
+    user: ""
+    passwd: ""
+
+  metrics:
+    enabled: false
+    token: ""
+
+  init:
+    adminUser: caryyu
+#   adminPassword: caryyu
+    adminEmail: caryyu@example.com
+
+    authEnabled: false
+    authName: alicloud
+    authProvider: openidConnect
+    authKey: "xxxxxx"
+    authSecret: "xxxxxx"
+    authAutoDiscoverUrl: "https://oauth.aliyun.com/.well-known/openid-configuration"
