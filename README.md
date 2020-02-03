@@ -3,8 +3,16 @@ A community [Gitea](https://gitea.com/) helm chart with a more powerful and exte
 
 ## Installation
 
+Add the repo:
+
 ```
-helm install --name caryyu/gitea
+helm repo add caryyu https://caryyu.github.io/helm-charts/
+```
+
+Then, install: 
+
+```
+helm install --name gitea caryyu/gitea
 ```
 
 ## Uninstallation
