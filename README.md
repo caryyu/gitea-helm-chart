@@ -56,7 +56,7 @@ Parameter                        | Description                            | Defa
 `image.pullPolicy`               | k8s image pull policy                  | IfNotPresent                                              
 `replicaCount`                   | number of replicas                     | 1                                                         
 `podAnnotations`                 | pod's annotation                       | {}                                                        
-`service.type`                   | service type                           | ClusterIP                                                 
+`service.type`                   | type of kubernetes services used for http i.e. ClusterIP, NodePort or LoadBalancer                           | ClusterIP                                                 
 `service.labels`                 | service labels                         | []                                                        
 `service.annotations`            | service annotations                    | []                                                        
 `service.selector`               | service selector                       | []                                                        
