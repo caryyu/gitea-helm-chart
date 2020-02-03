@@ -50,7 +50,7 @@ config:
 The following tables list the configurable parameters of this chart and their default values.
 
 | Parameter                     | Description           | Default               |
-| ---------------------------------------------------------- | --------------------- | --------------------- |
+| ----------------------------- | --------------------- | --------------------- |
 | image.repository              | the image name        | gitea/gitea           |
 | image.tag                     | the image tag         | 1.9.3                 |
 | image.pullPolicy              | k8s image pull policy | IfNotPresent          |
@@ -80,4 +80,3 @@ The following tables list the configurable parameters of this chart and their de
 | config.database.user          | -                     | gitea                 |
 | config.database.passwd        | -                     | gitea                 |
 | config.security.installLock   | -                     | true                  |
- 
