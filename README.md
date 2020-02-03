@@ -1,5 +1,5 @@
 # Gitea Helm Chart
-A community [Gitea](https://gitea.com/) helm chart with a more powerful and extensible archtecture design for the long run 
+A community [Gitea](https://gitea.com/) helm chart with a more extensible archtecture design for the long run 
 
 ## Installation
 
