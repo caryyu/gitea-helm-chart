@@ -25,6 +25,8 @@ helm delete --purge gitea
 
 ### Admin User
 
+the admin password will be stored into a secret `gitea-init-secret` and if `adminPassword` is unset, the init-script will choose a random one
+
 ```
 config:
   init:
@@ -80,3 +82,7 @@ Parameter                        | Description                            | Defa
 `config.database.user`           | -                                      | gitea                                                     
 `config.database.passwd`         | -                                      | gitea                                                     
 `config.security.installLock`    | -                                      | true                                                      
+
+# Contribution
+
+Issues and PRs are welcomed
