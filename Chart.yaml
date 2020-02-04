@@ -1,6 +1,6 @@
 name: gitea
-version: 0.0.2
-appVersion: 0.0.2
+version: 0.0.3
+appVersion: 0.0.3
 description: Git with a cup of tea
 icon: https://docs.gitea.io/images/gitea.png
 keywords:

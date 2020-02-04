@@ -12,6 +12,14 @@ service:
   annotations: []
   selector: []
 
+persistence:
+  enabled: false
+  size: 10Gi
+  accessMode: ReadWriteMany
+  # storageClass: hostpath
+  # annotations:
+  #   "xxx": "xxx" 
+
 mysql:
   enabled: true
   image: mysql
@@ -66,7 +74,7 @@ config:
 
   init:
     adminUser: caryyu
-#   adminPassword: caryyu
+    # adminPassword: caryyu
     adminEmail: caryyu@example.com
 
     authEnabled: false
