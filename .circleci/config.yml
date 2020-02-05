@@ -31,6 +31,7 @@ jobs:
           name: Deploy to Repository
           command: |
             mv /workspace/gitea*.tgz /tmp/helm-charts
+            helm repo index .
             git add .
             git commit -m "updated by circleci"
             git push
