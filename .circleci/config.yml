@@ -29,7 +29,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "5e:60:c2:b6:97:da:45:34:de:0d:61:c2:91:62:84:69"
+            - "81:1f:14:a0:d3:3e:5c:1e:b8:1d:e8:41:90:a0:88:8e"
 
       - run:
           name: Deploy to Repository
