@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  deploy_chart:
+  deploy_helm_chart:
     working_directory: /workspace
     docker:
       - image: caryyu/helm-tools:latest
@@ -35,3 +35,13 @@ jobs:
             git add .
             git commit -m "updated by circleci"
             git push
+
+workflows:
+  version: 2
+  running:
+    jobs:
+      - deploy_helm_chart:
+          filters:
+            branches:
+              only:
+                - master
