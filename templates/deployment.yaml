@@ -51,8 +51,10 @@ spec:
         volumeMounts:
         - mountPath: /data/gitea/conf
           name: gitea-config
+{{- if .Values.persistence.enabled }}
         - mountPath: /data/git/gitea-repositories
           name: gitea-repositories
+{{- end }}
         livenessProbe:
           tcpSocket:
             port: http
@@ -77,6 +79,8 @@ spec:
           name: gitea-init-scripts
       - name: gitea-config
         emptyDir: {}
+{{- if .Values.persistence.enabled }}
       - name: gitea-repositories
         persistentVolumeClaim:
          claimName: gitea-repositories-pvc
+{{- end }}
