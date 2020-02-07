@@ -3,7 +3,7 @@ jobs:
   deploy_chart:
     working_directory: /workspace
     docker:
-      - image: caryyu/notebook-tools:latest
+      - image: caryyu/helm-tools:latest
     steps:
       - checkout
 

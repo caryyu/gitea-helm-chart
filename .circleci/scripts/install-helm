@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# https://docs.helm.sh/using_helm/#from-script
+
+mkdir -p scripts
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > scripts/get_helm.sh
+chmod +x ./scripts/get_helm.sh
+./scripts/get_helm.sh --version v2.13.1

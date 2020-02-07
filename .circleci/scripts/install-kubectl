@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-binary-via-curl
+set -e
+set -x
+
+OS=$(uname | awk '{print tolower($0)}')
+KUBECTL_LATEST=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+KUBECTL_VERSION=${1:-$KUBECTL_LATEST}
+curl -o /usr/local/bin/kubectl-${KUBECTL_VERSION} -sSL https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/${OS}/amd64/kubectl
+
+KUBECTL_VERSION_SHA=$(curl -sSL https://github.com/kubernetes/kubectl/releases/download/${KUBECTL_VERSION}/kubectl-${OS}-amd64.sha256)
+
+echo $KUBECTL_VERSION_SHA
+sha256sum /usr/local/bin/kubectl-$KUBECTL_VERSION
+chmod +x /usr/local/bin/kubectl-$KUBECTL_VERSION
+# KUBECTL_LATEST == KUBECTL_VERSION
+ln -sf /usr/local/bin/kubectl-$KUBECTL_VERSION /usr/local/bin/kubectl
