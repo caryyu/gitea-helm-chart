@@ -27,6 +27,10 @@ jobs:
             git config --global user.email "caryyu.tg@gmail.com"
             git config --global user.name "caryyu"
 
+      - add_ssh_keys:
+          fingerprints:
+            - "5e:60:c2:b6:97:da:45:34:de:0d:61:c2:91:62:84:69"
+
       - run:
           name: Deploy to Repository
           command: |
