@@ -19,11 +19,11 @@ jobs:
           name: Clone Repository
           command: |
             git clone git@github.com:caryyu/helm-charts.git /tmp/helm-charts
-            cd /tmp/helm-charts
 
       - run:
           name: Git Config
           command: |
+            cd /tmp/helm-charts
             git config --global user.email "caryyu.tg@gmail.com"
             git config --global user.name "caryyu"
 
@@ -34,6 +34,7 @@ jobs:
       - run:
           name: Deploy to Repository
           command: |
+            cd /tmp/helm-charts
             mv /workspace/gitea*.tgz /tmp/helm-charts
             helm repo index .
             git add .
