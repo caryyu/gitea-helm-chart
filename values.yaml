@@ -12,6 +12,12 @@ service:
   annotations: []
   selector: []
 
+ingress:
+  enabled: false
+  host: gitea.local
+  # annotations:
+  #   "xxx": "xxx"
+
 persistence:
   enabled: false
   size: 10Gi
