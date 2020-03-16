@@ -48,6 +48,9 @@ config:
     authAutoDiscoverUrl: "https://oauth.aliyun.com/.well-known/openid-configuration"
 ```
 
+> Note: the callback given to OIDC Provider should follow the format of 
+`(http|https)://hostname:port/user/oauth2/<authName>/callback`
+
 ## Configuration
 The following tables list the configurable parameters of this chart and their default values.
 
@@ -71,17 +74,17 @@ Parameter                        | Description                            | Defa
 `mysql.mysqlAllowEmptyPassword`  | allow empty password                   | false                                                     
 `mysql.timezone`                 | datbase time zone                      | Asia/Shanghai                                             
 `mysql.persistence.enabled`      | database pvc enabling                  | false                                                     
-`config.server.domain`           | -                                      | localhost                                                 
-`config.server.rootUrl`          | -                                      | http://localhost:3000                                     
-`config.server.sshDomain`        | -                                      | localhost                                                 
-`config.server.offlineMode`      | -                                      | false                                                     
-`config.database.dbType`         | -                                      | mysql                                                     
-`config.database.host`           | -                                      | gitea-mysql                                               
-`config.database.port`           | -                                      | 3306                                                      
-`config.database.name`           | -                                      | gitea                                                     
-`config.database.user`           | -                                      | gitea                                                     
-`config.database.passwd`         | -                                      | gitea                                                     
-`config.security.installLock`    | -                                      | true                                                      
+`config.server.domain`           | @see the official doc                                      | localhost                                                 
+`config.server.rootUrl`          | @see the official doc                                      | http://localhost:3000                                     
+`config.server.sshDomain`        | @see the official doc                                      | localhost                                                 
+`config.server.offlineMode`      |  @see the official doc                                     | false                                                     
+`config.database.dbType`         | Currently only supports MySQL                                      | mysql                                                     
+`config.database.host`           | the database host connecting to                                     | gitea-mysql                                               
+`config.database.port`           | the database port                                      | 3306                                                      
+`config.database.name`           | Your database name                                     | gitea                                                     
+`config.database.user`           | Your database username                                      | gitea                                                     
+`config.database.passwd`         | Your database password                                      | gitea                                                     
+`config.security.installLock`    | We should always keep this true by Configuration-as-Code concept, which all the configs should be accompolished during installation stage                                     | true                                                      
 
 # Contribution
 
