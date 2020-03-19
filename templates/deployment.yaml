@@ -38,7 +38,14 @@ spec:
           name: gitea-immutable-config
         - mountPath: /etc/gitea/scripts/
           name: gitea-init-scripts
-        command: [ "sh", "/etc/gitea/scripts/init.sh" ]
+        command: 
+        - bash
+        - /etc/gitea/scripts/wait-for-it.sh
+        - ${DATABASE_HOST}:${DATABASE_PORT}
+        - --timeout=30
+        - --
+        - bash
+        - /etc/gitea/scripts/init.sh
       containers:
       - name: gitea
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

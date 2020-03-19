@@ -7,6 +7,8 @@
 cp /etc/gitea/conf/app.ini \
   /data/gitea/conf/app.ini
 
+# waiting for database fully start up and do the migration
+sleep 20
 gitea migrate
 
 echo "check if it already obtains an admin user"
@@ -28,8 +30,8 @@ if [ "$AUTH_NAME" != "" ]; then
   NAME=`gitea admin auth list | \
           grep 'ID Name Type Enabled' | \
              awk '{print $5}'`
-
-  if [ $NAME != $AUTH_NAME ]; then
+  
+  if [ "$NAME" != "$AUTH_NAME" ]; then
     echo "configure a sso authentication"
     gitea admin auth add-oauth \
       --name $AUTH_NAME \
