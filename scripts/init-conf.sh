@@ -7,32 +7,42 @@
 cp /etc/gitea/conf/app.ini \
   /data/gitea/conf/app.ini
 
-# waiting for database fully start up and do the migration
-sleep 20
-gitea migrate
+# retry until success
+echo "[migration] Setup started"
+while true; do 
+  gitea migrate
+  if [[ $? == 0 ]]; then 
+    echo "[migration] Setup completed"
+    break
+  fi
+  echo "[migration] Oops.. Perhaps database isn't ready, retry...."
+  sleep 2
+done
 
-echo "check if it already obtains an admin user"
+echo "[administrator] Setup started"
 gitea admin change-password \
   --username $ADMIN_USER \
   --password $ADMIN_PASSWORD
 
 if [ $? == 1 ]; then
-  echo "create a new admin user"
+  echo "[administrator] Let's create an entire new administrator"
   gitea admin create-user \
     --username $ADMIN_USER \
     --password $ADMIN_PASSWORD \
     --email $ADMIN_EMAIL --admin
 else
-  echo "skip the admin creating "
+  echo "[administrator] Found an administrator, creating skipped"
 fi
+echo "[administrator] Setup completed"
 
+echo "[OAuth] Setup started"
 if [ "$AUTH_NAME" != "" ]; then
   NAME=`gitea admin auth list | \
           grep 'ID Name Type Enabled' | \
              awk '{print $5}'`
   
   if [ "$NAME" != "$AUTH_NAME" ]; then
-    echo "configure a sso authentication"
+    echo "[OAuth] Let's configure OAuthN"
     gitea admin auth add-oauth \
       --name $AUTH_NAME \
       --provider $AUTH_PROVIDER \
@@ -40,7 +50,10 @@ if [ "$AUTH_NAME" != "" ]; then
       --secret $AUTH_SECRET \
       --auto-discover-url $AUTH_AUTODISCOVER_URL
   else
-    echo "skip sso authentication"
+    echo "[OAuth] OAuthN skipped due to there's existing one already"
   fi
-
+else
+  echo "[OAuth] OAuthN skipped due to disabled"
 fi
+
+echo "[OAuth] Setup completed"
