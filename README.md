@@ -1,23 +1,24 @@
 # Gitea Helm Chart
+
 A community [Gitea](https://gitea.com/) helm chart with a more extensible archtecture design for the long run 
 
 ## Installation
 
 Add the repo:
 
-```
+```shell
 helm repo add caryyu https://caryyu.github.io/helm-charts/
 ```
 
 Then, install: 
 
-```
+```shell
 helm install --name gitea caryyu/gitea
 ```
 
 ## Uninstallation
 
-```
+```shell
 helm delete --purge gitea
 ```
 
@@ -27,7 +28,7 @@ helm delete --purge gitea
 
 the admin password will be stored into a secret `gitea-init-secret` and if `adminPassword` is unset, the init-script will choose a random one
 
-```
+```yaml
 config:
   init:
     adminUser: caryyu
@@ -37,7 +38,7 @@ config:
 
 ### SSO & Authentication
 
-```
+```yaml
 config:
   init:
     authEnabled: false
